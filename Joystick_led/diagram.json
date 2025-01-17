@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 6.45,
+      "left": 109.2,
+      "attrs": { "env": "arduino-community" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 3, "left": 0, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": 48, "left": 0, "attrs": { "color": "yellow" } },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 102,
+      "left": -15.4,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 8.3, "left": 239.8, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": 104.3, "left": 239.8, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 179,
+      "left": 240,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "pico:GND.1", "led1:C", "black", [] ],
+    [ "pico:GND.2", "led2:C", "black", [] ],
+    [ "pico:GND.3", "led3:C", "black", [] ],
+    [ "$serialMonitor:RX", "pico:GP0", "", [] ],
+    [ "led2:A", "pico:GP11", "green", [ "v0" ] ],
+    [ "led1:A", "pico:GP12", "green", [ "v0" ] ],
+    [ "led3:A", "pico:GP13", "green", [ "v0" ] ],
+    [ "pot1:GND", "pico:GND.8", "black", [ "v-38.4", "h-86.4" ] ],
+    [ "pot1:VCC", "pico:VSYS", "red", [ "v0" ] ],
+    [ "pot1:SIG", "pico:GP26", "green", [ "v0" ] ],
+    [ "pot2:GND", "pot1:GND", "black", [ "v0" ] ],
+    [ "pot2:VCC", "pot1:VCC", "red", [ "v0" ] ],
+    [ "pot2:SIG", "pico:GP27", "green", [ "v0" ] ],
+    [ "pot2:GND", "btn1:1.l", "black", [ "v0" ] ],
+    [ "btn1:2.l", "btn1:1.l", "green", [ "h0" ] ],
+    [ "btn1:1.r", "pico:GP22", "green", [ "v0" ] ],
+    [ "btn1:1.r", "btn1:2.r", "green", [ "v19.2", "h-9.4" ] ]
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware ='./build/joystick.hex'
+elf = './build/joystick.elf'
+gdbServerPort=3333
